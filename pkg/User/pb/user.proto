@@ -1,0 +1,23 @@
+syntax = "proto3";
+package pb;
+option go_package="github.com/grpc/gobus/user/pb";
+
+service UserServices{
+    rpc EditUser(UserDataReq)returns (RESULT);
+    rpc DeleteUserById(IdREQ)returns (RESULT);
+    rpc FindUserById(IdREQ)returns (RESULT);
+    rpc CreateUser(UserDataReq)returns (RESULT);
+}
+message UserDataReq{
+    string UserName = 1;
+    string Password = 2;
+    string Email = 3;
+}
+message IdREQ{
+    uint32 Id = 1;
+}
+message RESULT{
+    string status = 1;
+    string error = 2;
+    string message = 3;
+}

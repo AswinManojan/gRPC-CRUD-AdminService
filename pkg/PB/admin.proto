@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/grpc/admin/pb";
+
+service AdminService {
+    rpc AdminLogin (LoginRequest) returns (result);
+    rpc EditUser(UserDataRequest)returns (result);
+    rpc DeleteUserById(IdRequest)returns (result);
+    rpc FindUserById(IdRequest)returns (result);
+    rpc CreateUser(UserDataRequest)returns (result);
+    rpc EditProvider(ProviderDataRequest)returns (result);
+    rpc DeleteProviderById(IdRequest)returns (result);
+    rpc FindProviderById(IdRequest)returns (result);
+    rpc CreateProvider(ProviderDataRequest)returns (result);
+}
+
+message ProviderDataRequest{
+    string UserName = 1;
+    string Password = 2;
+    string Email = 3;
+}
+message LoginRequest{
+    string Username = 1;
+    string Password = 2;
+}
+message IdRequest{
+    uint32 Id = 1;
+}
+message result{
+    string status = 1;
+    string error = 2;
+    string message = 3;
+}
+message UserDataRequest{
+    string UserName = 1;
+    string Password = 2;
+    string Email = 3;
+}
